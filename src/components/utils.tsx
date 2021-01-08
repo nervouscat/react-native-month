@@ -49,7 +49,11 @@ export function getMonthDays(
 
   for (let i = -startWeekOffset; i < daysToAdd + lastRowNextMonthDays; i++) {
     const date: Date = addDays(firstMonthDay, i);
+    if(date.getHours() == 23){
+        date.setDate(date.getDate() + 1);
+    }
     const day = date.getDate();
+    
     const month = date.getMonth();
     const fullDay = day < 10 ? `0${day}` : day.toString();
     const fullMonth = month < 10 ? `0${month + 1}` : (month + 1).toString();
